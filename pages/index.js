@@ -3,13 +3,15 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
+
 // import Navbar from '../components/navbar'
 
 export default function Home() {
 
   // const [price, setPrice] = useState("");
   const [data, setData] = useState([]);
-
+  var link = '';
 
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
@@ -75,6 +77,7 @@ export default function Home() {
       <ul style={{listStyleType: "none"}}>
 
         {data.map(function(d, idx){
+          link = "/stock/" + d["symbol"];
         return (
           <li key={idx}>
           <div className="flex justify-center">
@@ -85,9 +88,9 @@ export default function Home() {
               {/* <p className="text-gray-700 text-base mb-4">
                 ${d["latestPrice"]}
               </p> */}
-              <button type="button" class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">
-                  ${d["latestPrice"]}
-              </button>
+              <Link href={link}>
+                  <a class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</a>
+              </Link>
             </div>
           </div>
         </div>
