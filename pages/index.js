@@ -5,19 +5,50 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 
+// import { Autocomplete } from '@mui/material';
+// import TextField from '@mui/material/TextField';
 // import Navbar from '../components/navbar'
 
 export default function Home() {
 
-  // const [price, setPrice] = useState("");
+  const [searchBar, searchBarChange] = useState('');
   const [data, setData] = useState([]);
+  const [suggestions, setSuggestions] = useState('');
   var link = '';
+  // var listofstocks = [];
+  const [listofstocks, setListofStocks] = useState([]);
 
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
-  
+  const onChangeHandler = (text) => {
+    let matches = []
+    if (text.length>0){
+      matches = listofstocks.filter(stock => {
+        const regex = new RegExp(`${text}`, "gi")
+        return stock.symbol.match(regex)
+      })
+    }
+    console.log('matches:', matches)
+    setSuggestions(matches.slice(0, 10));
+    searchBarChange(text);
+    
+
+  }
   
   useEffect(() => {
+
+    axios({
+      method: 'get',
+      url: baseUrl + "ref-data/iex/symbols/?token=" + process.env.secret,
+      responseType: 'json',
+    })
+    .then(function (response) {
+      setListofStocks(response.data)
+      // for (let i = 0; i < response.data.length; i++) {
+      //   listofstocks.push(response.data[i]["symbol"])
+      // }
+      // console.log(listofstocks)
+    })
   
     axios({
       method: 'get',
@@ -50,6 +81,8 @@ export default function Home() {
           <div className="mb-3 xl:w-96">
             <input
               type="text"
+              value={searchBar}
+              onChange={e => onChangeHandler(e.target.value)}
               className="
                 form-control
                 block
@@ -72,6 +105,15 @@ export default function Home() {
             />
           </div>
         </div>
+
+        {suggestions && suggestions.map((suggestion, i) =>
+          <div key={i}>
+            <Link href={`/stock/${suggestion.symbol}`}><a> {suggestion.symbol} </a></Link>
+          </div>
+        )}
+
+
+
 
 
       <ul style={{listStyleType: "none"}}>
