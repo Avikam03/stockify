@@ -43,7 +43,23 @@ export default function Home() {
       responseType: 'json',
     })
     .then(function (response) {
+      // var temp = response.data
+      // temp.forEach(function (element) {
+      //   if (element['change']?.charAt(0) === '-'){
+      //     element['changeclassname'] = "negative-change"
+      //   } else {
+      //     element['changeclassname'] = "positive-change"
+      //   }
+      // });
+      // setListofStocks(temp)
+      // console.log(temp)
       setListofStocks(response.data)
+      console.log(response.data)
+      
+      
+
+
+
       // for (let i = 0; i < response.data.length; i++) {
       //   listofstocks.push(response.data[i]["symbol"])
       // }
@@ -56,9 +72,19 @@ export default function Home() {
       responseType: 'json'
     })
     .then(function (response) {
+        var temp = response.data
+        temp.forEach(function (element) {
+          if (element['change'].toString().charAt(0) === '-'){
+            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-500 text-white rounded"
+          } else {
+            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded"
+          }
+        });
+        setData(temp)
+        console.log(temp)
         // console.log(response.data[0]["symbol"])
-        setData(response.data)
-        console.log(response.data)
+        // setData(response.data)
+        // console.log(response.data)
     });
 
 
@@ -131,8 +157,11 @@ export default function Home() {
                 ${d["latestPrice"]}
               </p> */}
               <Link href={link}>
-                  <a class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</a>
+                  <a className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</a>
               </Link>
+              <div className={`${d["changeclassname"]}`}>
+                {d["change"]}
+              </div>
             </div>
           </div>
         </div>
@@ -141,6 +170,7 @@ export default function Home() {
        })}
 
       </ul>  
+
 
 
 
