@@ -5,8 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 
-// import { Autocomplete } from '@mui/material';
-// import TextField from '@mui/material/TextField';
+
 import Navbar from '../components/navbar'
 
 export default function Home() {
@@ -109,7 +108,7 @@ export default function Home() {
         </h1>
 
         <div className="flex justify-center">
-          <div className="mb-3 xl:w-96">
+          <div className="xl:w-96">
             <input
               type="text"
               value={searchBar}
@@ -137,9 +136,9 @@ export default function Home() {
           </div>
         </div>
 
-        {suggestions && suggestions.map((suggestion, i) =>
+        {suggestions && suggestions.map((suggestion, i) =>  
         <div className="xl:w-96 h-9 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded hover:bg-gray-100 cursor-pointer" key={i}>
-          <Link href={`/stock/${suggestion.symbol}`}><a> {suggestion.symbol} </a></Link>
+          <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link>
         </div>
         )}
 

@@ -12,7 +12,6 @@ export default function Stock(){
 
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
-
   useEffect(() => {
     
       axios({
@@ -27,63 +26,6 @@ export default function Stock(){
 
   }, [router])
 
-
-//   avgTotalVolume: 84816394
-// calculationPrice: "close"
-// change: -3.59
-// changePercent: -0.02134
-// close: 166.64
-// closeSource: "cliafoif"
-// closeTime: 1720154785923
-// companyName: "Apple Inc"
-// currency: "USD"
-// delayedPrice: 171.75
-// delayedPriceTime: 1705691565911
-// extendedChange: -0.47
-// extendedChangePercent: -0.00276
-// extendedPrice: 172.09
-// extendedPriceTime: 1660143371632
-// high: 179.3
-// highSource: "rnd eyma dieuci51ple te"
-// highTime: 1716547456819
-// iexAskPrice: 0
-// iexAskSize: 0
-// iexBidPrice: 0
-// iexBidSize: 0
-// iexClose: 166.52
-// iexCloseTime: 1669715161307
-// iexLastUpdated: 1644991631194
-// iexMarketPercent: 0.01166902881080025
-// iexOpen: 171.11
-// iexOpenTime: 1666926970598
-// iexRealtimePrice: 172.64
-// iexRealtimeSize: 73
-// iexVolume: 1105932
-// isUSMarketOpen: false
-// lastTradeTime: 1713811275029
-// latestPrice: 166.29
-// latestSource: "Close"
-// latestTime: "January 19, 2022"
-// latestUpdate: 1672826604265
-// latestVolume: 96422426
-// low: 166.64
-// lowSource: "ineyu ecd ier1da5 petml"
-// lowTime: 1696858425113
-// marketCap: 2782319991397
-// oddLotDelayedPrice: 169.269
-// oddLotDelayedPriceTime: 1658691600112
-// open: 174.74
-// openSource: "ocfiilfa"
-// openTime: 1647732519041
-// peRatio: 15.2
-// previousClose: 174.5
-// previousVolume: 91692223
-// primaryExchange: "NAQASD"
-// symbol: "AAPL"
-// volume: 97502620
-// week52High: 191.59
-// week52Low: 117.96
-// ytdChange: -0.06482640749457655
 
   return(
     
