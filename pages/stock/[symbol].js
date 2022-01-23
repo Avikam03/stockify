@@ -9,10 +9,23 @@ export default function Stock(){
   const router = useRouter()
   var { symbol } = router.query;
   const [data, setData] = useState([]);
+  const [logo, setLogo] = useState('');
 
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
   useEffect(() => {
+
+      // axios({
+      //   method: "get",
+      //   url: baseUrl + "stock/" + symbol + "/logo/?token=" + process.env.secret,
+      //   responseType: "json"
+      // })
+      // .then(function (response) {
+      //     setLogo(response.data)
+      //     console.log(response.data)
+      // })
+      const temp = "https://storage.googleapis.com/iex/api/logos/" + symbol +".png" 
+      setLogo(temp)
     
       axios({
         method: 'get',
@@ -31,6 +44,7 @@ export default function Stock(){
     
     <div className={styles.container}>
       <main className={styles.main}>
+      {/* <img src={logo}></img> */}
       <h1>
         <span className="text-5xl font-medium leading-tight mt-0 mb-2 text-blue-600">
         {data['companyName']}
