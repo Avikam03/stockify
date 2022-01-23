@@ -1,15 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
 import { faBars } from "@fortawesome/free-solid-svg-icons"; 
+import Link from 'next/link'
 
 export default function NavBar(){
   return(
     <nav className="container flex items-center py-4 sm:mt-1">
       {/* mt-4 sm:mt-12 */}
-      <div className="py-1"><img className="object-cover h-10 w-25" src="https://gcdn.pbrd.co/images/Cc12280bx0z2.png?o=1" /></div>
+      <div className="py-1">
+        <Link href="/">
+        <img className="cursor-pointer object-cover h-10 w-25" src="https://gcdn.pbrd.co/images/jM04spAa3Auc.png?o=1" />
+        </Link>
+        </div>
       <ul className="hidden sm:flex flex-1 justify-end items-center gap-12 text-bookmark-blue uppercase text-xs">
         <li className="cursor-pointer">Features</li>
-        <li className="cursor-pointer">About</li>
+        <li className="cursor-pointer"><Link href="/about">About</Link></li>
         <li className="cursor-pointer ">Dashboard</li>
       </ul>
       <div className="flex sm:hidden flex-1 justify-end">

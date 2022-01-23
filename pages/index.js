@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 
 import Navbar from '../components/navbar'
@@ -108,37 +110,33 @@ export default function Home() {
           Stock App
         </h1> */}
 
-        <section className="relative">
-          <div className="container flex flex-col reverse lg:flex-row items-center gap-12 mt-14 lg:mt-20">
-            <div className="flex flex-1 flex-col items-center lg:items-start">
-              <h2 className="text-bookmark-blue text-3xl md:text-4 lg:text-5xl text-center lg:text-left mb-6">
-                A Simple Stock App
-              </h2>
-              <p className="text-bookmark-grey text-lg text-center lg:text-left mb-6">
-                A very noice app lmao
-              </p>
-              <div className="flex justify-center flex-wrap gap-6">
-                <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Blue</button>
-                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Dark</button>
-              </div>
-            </div>
+        <h1 className="mt-20 text-center text-xl text-black-800 font-bold	 md:text-6xl lg:text-6xl">
+          <span className="text-indigo-400">Stock</span>ify
+        </h1>
 
-            <div className="flex justify-center flex-1 mb-10 md:mb-16 lg:mb-0">
-              <img className="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full" src="https://svgur.com/i/dd3.svg"/>
-            </div>
-          </div>
-
-        </section>
-
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <div className="flex justify-center">
-          <div className="xl:w-96">
+        {/* <div className="flex justify-center mt-10"> */}
+        <div class="flex items-center justify-center mt-10 ">
+          <div class="relative text-gray-600 focus-within:text-gray-400">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </button>
+            </span>
             <input
+              type="search"
+              name="q"
+              // class="py-2 text-sm text-white bg-gray-900 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
+              class="w-50 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
+              placeholder="Search for a Stock"
+              value={searchBar}
+              onChange={e => onChangeHandler(e.target.value)}
+              autocomplete="off"/>
+              
+          </div>
+        </div>  
+          {/* <div className="xl:w-96">
+            <input
+              autocomplete="new-password"
               type="text"
               value={searchBar}
               onChange={e => onChangeHandler(e.target.value)}
@@ -162,8 +160,8 @@ export default function Home() {
               id="exampleText0"
               placeholder="Search for Stocks"
             />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
         {suggestions && suggestions.map((suggestion, i) =>  
         <div className="xl:w-96 h-9 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded hover:bg-gray-100 cursor-pointer" key={i}>
@@ -174,6 +172,10 @@ export default function Home() {
         
 
         
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
 
 
 
@@ -188,14 +190,17 @@ export default function Home() {
           <div className="flex justify-center">
           <div className="rounded-lg shadow-lg bg-white max-w-sm">
             <div className="p-8">
-              <h6 className="text-3xl font-medium leading-tight mt-0 mb-2 text-blue-600">{d["companyName"]}</h6>
+              {/* <h6 className="text-3xl font-medium leading-tight mt-0 mb-2 text-blue-600">{d["companyName"]}</h6> */}
+              <Link href={link}>
+                <a className="text-3xl font-medium leading-tight mt-0 mb-2 text-blue-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
+                </Link>
               <h5 className="text-gray-900 text-xl font-medium mb-2">{d["symbol"]}</h5>
               {/* <p className="text-gray-700 text-base mb-4">
                 ${d["latestPrice"]}
               </p> */}
-              <Link href={link}>
-                  <a className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</a>
-              </Link>
+              
+              <h6 className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</h6>
+              
               <div className={`${d["changeclassname"]}`}>
                 {d["change"]}
               </div>
