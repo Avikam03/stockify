@@ -44,27 +44,9 @@ export default function Home() {
       responseType: 'json',
     })
     .then(function (response) {
-      // var temp = response.data
-      // temp.forEach(function (element) {
-      //   if (element['change']?.charAt(0) === '-'){
-      //     element['changeclassname'] = "negative-change"
-      //   } else {
-      //     element['changeclassname'] = "positive-change"
-      //   }
-      // });
-      // setListofStocks(temp)
-      // console.log(temp)
+
       setListofStocks(response.data)
       console.log(response.data)
-      
-      
-
-
-
-      // for (let i = 0; i < response.data.length; i++) {
-      //   listofstocks.push(response.data[i]["symbol"])
-      // }
-      // console.log(listofstocks)
     })
   
     axios({
@@ -162,7 +144,7 @@ export default function Home() {
             />
           </div> */}
         {/* </div> */}
-
+        
         {suggestions && suggestions.map((suggestion, i) =>  
         <div className="xl:w-96 h-9 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded hover:bg-gray-100 cursor-pointer" key={i}>
           <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link>
@@ -192,17 +174,21 @@ export default function Home() {
             <div className="p-8">
               {/* <h6 className="text-3xl font-medium leading-tight mt-0 mb-2 text-blue-600">{d["companyName"]}</h6> */}
               <Link href={link}>
-                <a className="text-3xl font-medium leading-tight mt-0 mb-2 text-blue-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
-                </Link>
-              <h5 className="text-gray-900 text-xl font-medium mb-2">{d["symbol"]}</h5>
-              {/* <p className="text-gray-700 text-base mb-4">
+                <a className="text-xl font-medium leading-tight mt-0 mb-2 text-black-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
+              </Link>
+
+              <h4 className="text-neutral-500 text-base font-medium mb-2">{d["symbol"]}</h4>
+
+              {/* inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-500 text-white rounded */}
+              {/* <h6 className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"> */}
+              {/* <h6 className="inline-block py-1.5 px-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"> */}
+              <h6 className="inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-900 text-white rounded">
+
                 ${d["latestPrice"]}
-              </p> */}
-              
-              <h6 className="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">${d["latestPrice"]}</h6>
+              </h6>
               
               <div className={`${d["changeclassname"]}`}>
-                {d["change"]}
+                {d["change"]}%
               </div>
             </div>
           </div>
