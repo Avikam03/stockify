@@ -5,7 +5,7 @@ import Navbar from '../components/navbar'
 export default function About() {
     return(
         
-        <div>
+        <div className={styles.container}>
         <Navbar />
 
         <main className={styles.main}>
