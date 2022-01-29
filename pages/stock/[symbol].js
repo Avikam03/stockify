@@ -16,20 +16,24 @@ export default function Stock(){
   const [data, setData] = useState([]);
   const [logo, setLogo] = useState('');
   const [graph, setGraph] = useState('')
+  const [labels, setlabels] = useState('')
+  const [about, setabout] = useState([])
 
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
   const lol = {
-    // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    labels: ['1st', '2nd', '3rd', '4th', '5th', '6th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'],
-  
+    labels: labels,
     datasets: [
       {
-        label: 'My First dataset',
+        label: '1 Month',
         fill: false,
         lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
+        // backgroundColor: 'rgba(75,192,192,0.4)',
+        // borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: "hsl(252, 82.9%, 67.8%)",
+        borderColor: "hsl(252, 82.9%, 67.8%)",
+        // backgroundColor: "#hsl(234, 89%, 74%)",
+        // borderColor: "#hsl(234, 89%, 74%)",
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
@@ -70,13 +74,26 @@ export default function Stock(){
       .then(function (response) {
           var temp = response.data
           var graphdata = []
+          var labeldata = []
           temp.forEach(function (element) {
             graphdata.push(element["close"])
+            labeldata.push(element["date"])
           });
+          setlabels(labeldata)
           setGraph(graphdata)
           console.log(response.data)
       });
     
+      axios({
+        method: 'get',
+        url: baseUrl + "stock/" + symbol + "/company/?token=" + process.env.secret,
+        responseType: 'json'
+      })
+      .then(function (response) {
+          setabout(response.data)
+          console.log(response.data)
+      });
+
       axios({
         method: 'get',
         url: baseUrl + "stock/" + symbol + "/quote/?token=" + process.env.secret,
@@ -138,19 +155,17 @@ export default function Stock(){
 
       </div>
 
+      <div>
+        {about['description']}
+      </div>
+
+      <div className="object-cover h-96 w-96">
       <Line
         data={lol}
         width={400}
         height={400}
       />
-
-      {/* <p>{data['change']}%</p>
-      <p>Market Cap ${data['marketCap']}</p>
-      <p>Open: ${data['open']}</p>
-      <p>High: ${data['high']}</p>
-      <p>Low: ${data['low']}</p>
-      <p>PE Ratio{data['peRatio']}</p> */}
-      {/* <p>${data['marketCap'].toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</p> */}
+      </div>
 
       </div>
 
