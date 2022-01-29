@@ -9,7 +9,7 @@ export default function NavBar(){
       {/* mt-4 sm:mt-12 */}
       <div className="py-1">
         <Link href="/">
-        <img className="cursor-pointer object-cover h-10 w-25" src="https://gcdn.pbrd.co/images/jM04spAa3Auc.png?o=1" />
+        <img className="cursor-pointer object-cover h-10 w-25" src="https://i.ibb.co/w61SgR9/stockify.png" />
         </Link>
         </div>
       <ul className="hidden sm:flex flex-1 justify-end items-center gap-12 text-bookmark-blue uppercase text-xs">
