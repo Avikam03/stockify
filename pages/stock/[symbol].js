@@ -155,7 +155,7 @@ export default function Stock(){
                   </div>
                   <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Change</h1>
-                        <p className="text-gray-500 mt-1 ml-2">{data['change']}</p>
+                        <p className="text-gray-500 mt-1 ml-2">{data['change']}%</p>
                   </div>
                   <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">YTD Change</h1>
