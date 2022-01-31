@@ -116,7 +116,7 @@ export default function Stock(){
       
       <h1 className="text-center text-4xl font-medium leading-tight mt-0 mb-5 text-black-600">{data['companyName']}</h1>
 
-      <div className="grid grid-row-2 grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-row-2 grid-cols-1 lg:grid-row-2 lg:grid-cols-3 gap-4 mb-4">
         <div className="py-3 col-span-2 bg-white rounded-lg border border-gray-200 shadow-md">
             <Line
             data={lol}
@@ -133,23 +133,23 @@ export default function Stock(){
       </div>
 
 
-      <div className="grid grid-row-2 grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-1 lg:grid-row-2 lg:grid-cols-3 gap-4 mb-4">
         {/* bg-white rounded-lg border border-gray-200 shadow-md */}
         <div className="py-3 col-span-2 ">
-            <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-2">
-                  <div className="mx-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+            <div className="grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:grid-rows-2">
+                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Latest Price</h1>
                         <p className="text-gray-500 mt-1 ml-2">${data['latestPrice']}</p>
                   </div>
-                  <div className="mx-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Market Cap</h1>
                         <p className="text-gray-500 mt-1 ml-2">${data['marketCap']}</p>
                   </div>
-                  <div className="mx-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">High / Low</h1>
                         <p className="text-gray-500 mt-1 ml-2">{data['high']} / {data['low']}</p>
                   </div>
-                  <div className="mx-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">PE Ratio</h1>
                         <p className="text-gray-500 mt-1 ml-2">{data['peRatio']}</p>
                   </div>

@@ -93,7 +93,7 @@ export default function Home() {
           Stock App
         </h1> */}
 
-        <h1 className="mt-20 text-center text-xl text-black-800 font-bold	 md:text-6xl lg:text-6xl">
+        <h1 className="mt-20 text-center text-6xl text-black-800 font-bold	 md:text-6xl lg:text-6xl">
           <span className="text-indigo-400">Stock</span>ify
         </h1>
 
@@ -112,7 +112,8 @@ export default function Home() {
               name="q"
               // class="py-2 text-sm text-white bg-gray-900 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
               // class="w-50 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
-              className="xl:w-96 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
+              // xl:w-96
+              className="w-80 md:w-96 h-12 py-2 px-20 text-sm text-black bg-zinc-200 rounded-md pl-10 focus:outline-none"
               placeholder="Search for a Stock"
               value={searchBar}
               onChange={e => onChangeHandler(e.target.value)}
@@ -212,10 +213,7 @@ export default function Home() {
       */}
 
       <ul style={{listStyleType: "none"}}>
-      {/* <div class="grid grid-rows-3 grid-flow-col gap-4"> */}
-      {/* <div class="grid lg:grid-rows-4 md:grid-rows-7 sm:grid-rows-7 grid-flow-col gap-4"> */}
-      {/* <div class="grid grid-rows-6 md:grid-cols-3 grid-flow-col gap-4"> */}
-      <div className="grid grid-flow-col md:grid-rows-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
 
 
@@ -224,7 +222,8 @@ export default function Home() {
       return (
         <li key={idx}>
         <div className="flex justify-center">
-        <div className="rounded-lg shadow-lg bg-white max-w-sm">
+        {/* max-w-sm */}
+        <div className="h-40 w-100 rounded-lg shadow-lg bg-white">
           <div className="p-8">
             <Link href={link}>
               <a className="text-xl font-medium leading-tight mt-0 mb-2 text-black-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
