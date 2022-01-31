@@ -116,8 +116,8 @@ export default function Stock(){
       
       <h1 className="text-center text-4xl font-medium leading-tight mt-0 mb-5 text-black-600">{data['companyName']}</h1>
 
-      <div class="grid grid-row-2 grid-cols-3 gap-4 mb-4">
-        <div class="py-3 col-span-2 bg-white rounded-lg border border-gray-200 shadow-md">
+      <div className="grid grid-row-2 grid-cols-3 gap-4 mb-4">
+        <div className="py-3 col-span-2 bg-white rounded-lg border border-gray-200 shadow-md">
             <Line
             data={lol}
             width={300}
@@ -125,7 +125,7 @@ export default function Stock(){
           />
         </div>
 
-        <div class="row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
           <h1 className="text-2xl font-medium leading-tight mt-5 mb-3 ml-5 text-black-600">About</h1>
           {/* <p className="mx-5 my-2">{about['description']}</p> */}
           <p className="text-gray-400 mx-5 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu  </p>
@@ -133,9 +133,9 @@ export default function Stock(){
       </div>
 
 
-      <div class="grid grid-row-2 grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-row-2 grid-cols-3 gap-4 mb-4">
         {/* bg-white rounded-lg border border-gray-200 shadow-md */}
-        <div class="py-3 col-span-2 ">
+        <div className="py-3 col-span-2 ">
             <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-2">
                   <div className="mx-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Latest Price</h1>
@@ -172,7 +172,7 @@ export default function Stock(){
             </div>
         </div>
 
-        <div class="my-3 row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="my-3 row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
               <h1 className="text-lg mx-2 my-2">Is the Market Open Right now: {data['isUSMarketOpen'] ? 'Yes' : 'No'}</h1>
         </div>
 

@@ -98,8 +98,8 @@ export default function Home() {
         </h1>
 
         {/* <div className="flex justify-center mt-10"> */}
-        <div class="flex items-center justify-center mt-10 ">
-          <div class="relative text-gray-600 focus-within:text-gray-400">
+        <div className="flex items-center justify-center mt-10 ">
+          <div className="relative text-gray-600 focus-within:text-gray-400">
 
             <div>
             {/* <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -112,11 +112,13 @@ export default function Home() {
               name="q"
               // class="py-2 text-sm text-white bg-gray-900 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
               // class="w-50 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
-              class="xl:w-96 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
+              className="xl:w-96 h-12 py-2 px-20 text-sm text-white bg-zinc-800 rounded-md pl-10 focus:outline-none"
               placeholder="Search for a Stock"
               value={searchBar}
               onChange={e => onChangeHandler(e.target.value)}
-              autocomplete="off"/>
+              // autocomplete="off"/>
+              autoComplete="off"/>
+
             </div>
 
             <div>
@@ -213,7 +215,7 @@ export default function Home() {
       {/* <div class="grid grid-rows-3 grid-flow-col gap-4"> */}
       {/* <div class="grid lg:grid-rows-4 md:grid-rows-7 sm:grid-rows-7 grid-flow-col gap-4"> */}
       {/* <div class="grid grid-rows-6 md:grid-cols-3 grid-flow-col gap-4"> */}
-      <div class="grid grid-flow-col md:grid-rows-4 gap-4">
+      <div className="grid grid-flow-col md:grid-rows-4 gap-4">
 
 
 
