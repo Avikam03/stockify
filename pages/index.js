@@ -125,6 +125,7 @@ export default function Home() {
             <div>
             {suggestions && suggestions.map((suggestion, i) =>  
               <div className="xl:w-96 h-9 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded hover:bg-gray-100 cursor-pointer" key={i}>
+                {/* <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link> */}
                 <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link>
               </div>
               )}
@@ -221,9 +222,9 @@ export default function Home() {
         link = "/stock/" + d["symbol"];
       return (
         <li key={idx}>
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center"> */}
         {/* max-w-sm */}
-        <div className="h-40 w-100 rounded-lg shadow-lg bg-white">
+        <div className="justify-center mx-3 h-40 w-60 lg:h-40 lg:w-1/10 rounded-lg shadow-lg bg-white">
           <div className="p-8">
             <Link href={link}>
               <a className="text-xl font-medium leading-tight mt-0 mb-2 text-black-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
@@ -240,7 +241,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        </div>
+        {/* </div> */}
         </li>
       )
       })}
