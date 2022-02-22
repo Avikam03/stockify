@@ -6,22 +6,18 @@ import Link from 'next/link'
 export default function NavBar(){
   return(
     <nav className="container flex items-center py-4 sm:mt-1">
-      {/* mt-4 sm:mt-12 */}
       <div className="py-1">
         <Link href="/">
-        
-        <img className="cursor-pointer object-cover h-10 w-25" src="https://i.ibb.co/ncWKcVc/image.png" />
-
-        {/* <img className="cursor-pointer object-cover h-10 w-25" src="https://i.ibb.co/w61SgR9/stockify.png" /> */}
+          <img className="cursor-pointer object-cover h-10 w-25" src="https://i.ibb.co/ncWKcVc/image.png" />
         </Link>
-        </div>
+      </div>
+
       <ul className="hidden sm:flex flex-1 justify-end items-center gap-12 text-bookmark-blue uppercase text-xs">
         <li className="cursor-pointer">Features</li>
         <li className="cursor-pointer"><Link href="/about">About</Link></li>
         <li className="cursor-pointer ">Dashboard</li>
       </ul>
       <div className="flex sm:hidden flex-1 justify-end">
-          {/* <i className="fas fa-bars"></i> */}
           <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
       </div>
     </nav>

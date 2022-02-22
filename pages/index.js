@@ -126,7 +126,9 @@ export default function Home() {
             {suggestions && suggestions.map((suggestion, i) =>  
               <div className="xl:w-96 h-9 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded hover:bg-gray-100 cursor-pointer" key={i}>
                 {/* <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link> */}
-                <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link>
+                {/* <Link href={`/stock/${suggestion.symbol}`}><a className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a></Link> */}
+                <a href={`/stock/${suggestion.symbol}`} className="ml-3 align-middle text-base font-medium leading-tight mt-0 mb-2 text-black-400"> {suggestion.symbol} </a>
+
               </div>
               )}
             </div>

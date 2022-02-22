@@ -19,6 +19,15 @@ export default function Stock(){
   const [labels, setlabels] = useState('')
   const [about, setabout] = useState([])
 
+  const [finnhub, setfinnhub] = useState({
+    "c": 999999.69,
+    "h": 999999.69,
+    "l": 999999.69,
+    "o": 999999.69,
+    "pc": 999999.69,
+    "t": 999999.69 
+  });
+
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
   const lol = {
@@ -104,6 +113,16 @@ export default function Stock(){
           console.log(response.data)
       });
 
+      axios({
+        method: 'get',
+        url: "https://finnhub.io/api/v1/quote?symbol=" +  symbol + '&token=' + process.env.fhsecret,
+        responseType: 'json'
+      })
+      .then(function (response) {
+        setfinnhub(response.data)
+        console.log(response.data)
+      })
+
   }, [router])
 
 
@@ -117,7 +136,7 @@ export default function Stock(){
       <h1 className="text-center text-4xl font-medium leading-tight mt-0 mb-5 text-black-600">{data['companyName']}</h1>
 
       <div className="grid grid-row-2 grid-cols-1 lg:grid-row-2 lg:grid-cols-3 gap-4 mb-4">
-        <div className="py-3 col-span-2 bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="py-3 col-span-2 bg-white rounded-xl border border-gray-200 shadow-md">
             <Line
             data={lol}
             width={300}
@@ -125,7 +144,7 @@ export default function Stock(){
           />
         </div>
 
-        <div className="row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="row-span-1  bg-white rounded-xl border border-gray-200 shadow-md">
           <h1 className="text-2xl font-medium leading-tight mt-5 mb-3 ml-5 text-black-600">About</h1>
           {/* <p className="mx-5 my-2">{about['description']}</p> */}
           <p className="text-gray-400 mx-5 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu  </p>
@@ -137,43 +156,73 @@ export default function Stock(){
         {/* bg-white rounded-lg border border-gray-200 shadow-md */}
         <div className="py-3 col-span-2 ">
             <div className="grid grid-flow-row-dense grid-cols-1 lg:grid-cols-4 lg:grid-rows-2">
-                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Latest Price</h1>
-                        <p className="text-gray-500 mt-1 ml-2">${data['latestPrice']}</p>
+                        {/* <p className="text-gray-500 mt-1 ml-2">${data['latestPrice']}</p> */}
+                        {/* <p className="text-gray-500 mt-1 ml-2">${finnhub['c']}</p>  */}
+
+                        {/*aight going to try something out */}
+                        <p className="text-gray-500 mt-1 ml-2">${finnhub['c']==999999.69 ? data['latestPrice'] : finnhub['c']}</p> 
                   </div>
-                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Market Cap</h1>
                         <p className="text-gray-500 mt-1 ml-2">${data['marketCap']}</p>
                   </div>
-                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">High / Low</h1>
-                        <p className="text-gray-500 mt-1 ml-2">{data['high']} / {data['low']}</p>
+                        {/* <p className="text-gray-500 mt-1 ml-2">{data['high']} / {data['low']}</p> */}
+                        {/* <p className="text-gray-500 mt-1 ml-2">{finnhub['h']} / {finnhub['l']}</p> */}
+
+                        {/*aight going to try something out */}
+                        <p className="text-gray-500 mt-1 ml-2">
+                          {finnhub['c']==999999.69 ? data['high'] : finnhub['h']}
+                          /
+                          {finnhub['c']==999999.69 ? data['low'] : finnhub['l']}
+                        </p>
                   </div>
-                  <div className="mx-3 mb-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mb-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">PE Ratio</h1>
                         <p className="text-gray-500 mt-1 ml-2">{data['peRatio']}</p>
                   </div>
-                  <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mt-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">Change</h1>
-                        <p className="text-gray-500 mt-1 ml-2">{data['change']}%</p>
+                        {/* <p className="text-gray-500 mt-1 ml-2">{data['change']}%</p> */}
+                        {/* <p className="text-gray-500 mt-1 ml-2">{finnhub['dp']}%</p> */}
+
+                        {/*aight going to try something out */}
+                        <p className="text-gray-500 mt-1 ml-2">${finnhub['c']==999999.69 ? data['change'] : finnhub['d']}</p> 
                   </div>
-                  <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mt-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">YTD Change</h1>
                         <p className="text-gray-500 mt-1 ml-2">{(data['ytdChange'] + '').slice(0, 4)}%</p>
                   </div>
-                  <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mt-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">52 Weeks High</h1>
                         <p className="text-gray-500 mt-1 ml-2">{data['week52High']}</p>
                   </div>
-                  <div className="mx-3 mt-3 bg-white rounded-lg border border-gray-200 shadow-md p-2">
+                  <div className="mx-3 mt-3 bg-white rounded-xl border border-gray-200 shadow-md p-2">
                         <h1 className="text-lg mt-1 ml-2">52 Weeks Low</h1>
                         <p className="text-gray-500 mt-1 ml-2">{data['week52Low']}</p>
                   </div>
             </div>
         </div>
 
-        <div className="my-3 row-span-1  bg-white rounded-lg border border-gray-200 shadow-md">
-              <h1 className="text-lg mx-2 my-2">Is the Market Open Right now: {data['isUSMarketOpen'] ? 'Yes' : 'No'}</h1>
+        <div className="my-3 row-span-1  bg-white rounded-xl border border-gray-200 shadow-md">
+              {/* <h1 className="text-lg mx-2 my-2">Is the Market Open Right now: {data['isUSMarketOpen'] ? 'Yes' : 'No'}</h1> */}
+              <h1 className="text-2xl mt-5 text-center	">Change Percent</h1>
+              <h1 className="text-lg my-2 text-center">{finnhub['c']==999999.69 ? data['changePercent'] : finnhub['dp']}%</h1> 
+              
+              {finnhub['c'][0] === "-" &&
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+              </svg>
+              }
+
+              {finnhub['c'][0] != "-" &&
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+              }
         </div>
 
       </div>
