@@ -28,6 +28,10 @@ export default function Stock(){
     "t": 999999.69 
   });
 
+  // const [fhabout, setfhabout] = useState({
+  //   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu"
+  // })
+
   const baseUrl = "https://sandbox.iexapis.com/stable/"
 
   const lol = {
@@ -123,6 +127,16 @@ export default function Stock(){
         console.log(response.data)
       })
 
+      // axios({
+      //   method: 'get',
+      //   url: "https://finnhub.io/api/v1/stock/profile?symbol=" +  symbol + '&token=' + process.env.fhsecret,
+      //   responseType: 'json'
+      // })
+      // .then(function (response) {
+      //   setfhabout(response.data)
+      //   console.log(response.data)
+      // })
+
   }, [router])
 
 
@@ -148,6 +162,8 @@ export default function Stock(){
           <h1 className="text-2xl font-medium leading-tight mt-5 mb-3 ml-5 text-black-600">About</h1>
           {/* <p className="mx-5 my-2">{about['description']}</p> */}
           <p className="text-gray-400 mx-5 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu  </p>
+          {/* <p className="text-gray-400 mx-5 my-4">{fhabout['description']}</p> */}
+
         </div>
       </div>
 
@@ -212,7 +228,7 @@ export default function Stock(){
               <h1 className="text-2xl mt-5 text-center	">Change Percent</h1>
               <h1 className="text-lg my-2 text-center">{finnhub['c']==999999.69 ? data['changePercent'] : finnhub['dp']}%</h1> 
               
-              {finnhub['c'][0] === "-" &&
+              {/* {finnhub['c'][0] === "-" &&
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
               </svg>
@@ -222,7 +238,7 @@ export default function Stock(){
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
-              }
+              } */}
         </div>
 
       </div>
