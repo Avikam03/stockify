@@ -17,7 +17,7 @@ export default function Stock(){
   const [logo, setLogo] = useState('');
   const [graph, setGraph] = useState('')
   const [labels, setlabels] = useState('')
-  const [about, setabout] = useState([])
+  const [about, setabout] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu')
 
   const [finnhub, setfinnhub] = useState({
     "c": 999999.69,
@@ -27,6 +27,7 @@ export default function Stock(){
     "pc": 999999.69,
     "t": 999999.69 
   });
+
 
   // const [fhabout, setfhabout] = useState({
   //   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu"
@@ -98,13 +99,17 @@ export default function Stock(){
       });
     
       axios({
+        // https://financialmodelingprep.com/api/v3/profile/AAPL?apikey=d203b00e82b2de753be3a38244eaad0b
         method: 'get',
-        url: baseUrl + "stock/" + symbol + "/company/?token=" + process.env.secret,
+        url: "https://financialmodelingprep.com/api/v3/profile/"  + symbol + "?apikey=" + process.env.fmpsecret,
         responseType: 'json'
       })
       .then(function (response) {
-          setabout(response.data)
+          setabout(response.data[0]["description"])
+          console.log("reached here")
           console.log(response.data)
+          console.log("printed already loh")
+          console.log(response.data[0]["description"])
       });
 
       axios({
@@ -160,8 +165,8 @@ export default function Stock(){
 
         <div className="row-span-1  bg-white rounded-xl border border-gray-200 shadow-md">
           <h1 className="text-2xl font-medium leading-tight mt-5 mb-3 ml-5 text-black-600">About</h1>
-          {/* <p className="mx-5 my-2">{about['description']}</p> */}
-          <p className="text-gray-400 mx-5 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu  </p>
+          <p className="mx-5 my-2">{about.substring(0, 736) + '...'}</p>
+          {/* <p className="text-gray-400 mx-5 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu magna. Lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim mauris, porttitor ac ac augue tellus orci eu. Dictumst quisque malesuada ultrices morbi cras est, magna nec. Est faucibus leo aenean eu magna. Lectus  magna nec. Est faucibus leo aenean eu  </p> */}
           {/* <p className="text-gray-400 mx-5 my-4">{fhabout['description']}</p> */}
 
         </div>
