@@ -148,6 +148,12 @@ export default function Stock(){
   return(
     
     <div className={styles.container}>
+      <Head>
+        <title>{symbol}</title>
+        <meta name="description" content="Stockify - simple stock visualising app" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navbar></Navbar>
       <main className={styles.main2}>
       {/* <img src={logo}></img> */}

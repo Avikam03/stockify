@@ -6,6 +6,12 @@ export default function About() {
     return(
         
         <div className={styles.container}>
+          <Head>
+            <title>Stockify</title>
+            <meta name="description" content="simple stock visualising app" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+
         <Navbar />
 
         <main className={styles.main}>
