@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
+import Head from 'next/head'
 
 
 export default function About() {
@@ -19,14 +20,14 @@ export default function About() {
           <div className="container flex flex-col reverse lg:flex-row items-center gap-12 mt-14 lg:mt-20">
             <div className="flex flex-1 flex-col items-center lg:items-start">
               <h2 className="text-bookmark-blue text-3xl md:text-4 lg:text-5xl text-center lg:text-left mb-6">
-                A Simple Stock App
+                A Simple Stock Screener
               </h2>
               <p className="text-bookmark-grey text-lg text-center lg:text-left mb-6">
-                A very noice app lmao
+                your neighbourhood stock recommender
               </p>
               <div className="flex justify-center flex-wrap gap-6">
-                <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Blue</button>
-                <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Dark</button>
+                {/* <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Blue</button>
+                <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Dark</button> */}
               </div>
             </div>
 
