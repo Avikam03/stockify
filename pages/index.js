@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Footer from './../components/footer'
 
 
 import Navbar from '../components/navbar'
@@ -58,9 +59,11 @@ export default function Home() {
         var temp = response.data
         temp.forEach(function (element) {
           if (element['change'].toString().charAt(0) === '-'){
-            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-500 text-white rounded"
+            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-[#EC6B70] text-white rounded"
+            // bg-red-50
           } else {
-            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded"
+            element['changeclassname'] = "inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-[#49D897] text-white rounded"
+            // bg-green-500
           }
         });
         setData(temp)
@@ -226,14 +229,16 @@ export default function Home() {
         <li key={idx}>
         {/* <div className="flex justify-center"> */}
         {/* max-w-sm */}
-        <div className="justify-center mx-3 h-40 w-60 lg:h-40 lg:w-1/10 rounded-lg shadow-lg bg-white">
+        <div className="justify-center mx-3 h-40 w-60 lg:h-40 lg:w-1/10 rounded-lg shadow-md bg-white">
           <div className="p-8">
             <Link href={link}>
-              <a className="text-xl font-medium leading-tight mt-0 mb-2 text-black-600">{d["companyName"].split(' ').slice(0, 2).join(' ')}</a>
+              <a className="text-xl font-medium leading-tight mt-0 mb-2 text-black-600">{d["companyName"].split(' ').slice(0, 3).join(' ')}</a>
             </Link>
 
-            <h4 className="text-neutral-500 text-base font-medium mb-2">{d["symbol"]}</h4>
-            <h6 className="mr-3 inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-900 text-white rounded">
+            <h4 className="text-[#A0A0A0] text-base font-medium mb-2">{d["symbol"]}</h4>
+            {/* text-neutral-500 */}
+            <h6 className="mr-3 inline-block py-1.5 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-[#525252] text-white rounded">
+              {/* gray-900 */}
 
               ${d["latestPrice"]}
             </h6>
@@ -273,7 +278,9 @@ export default function Home() {
         </a>
       </footer> */
       }
+      
     </div>
+    <Footer></Footer>
     </div>
   )
 }

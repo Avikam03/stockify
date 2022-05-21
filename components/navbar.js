@@ -15,7 +15,7 @@ export default function NavBar(){
       <ul className="hidden sm:flex flex-1 justify-end items-center gap-12 text-bookmark-blue uppercase text-xs">
         <li className="cursor-pointer">Features</li>
         <li className="cursor-pointer"><Link href="/about">About</Link></li>
-        <li className="cursor-pointer ">Dashboard</li>
+        <li className="cursor-pointer"><Link href="/dashboard">Dashboard</Link></li>
       </ul>
       <div className="flex sm:hidden flex-1 justify-end">
           <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
