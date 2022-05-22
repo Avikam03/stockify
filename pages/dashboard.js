@@ -13,10 +13,10 @@ export default function Home() {
 
   const [number, setNumber] = useState('')
 //   const [tickerlist, settickerlist] = useEffect('')
-  // const [qms, setqms] = useState({});
+  const [qms, setqms] = useState({});
   // var qms = []
   // var tickerlist = []
-  const [qvs, setQvs] = useState({});
+  const [qvs, setQvs] = useState([]);
   const [tickerlist, setTickerlist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   // const [tickerlist, settickerlist] = useState({});
@@ -38,8 +38,9 @@ export default function Home() {
       })
       .then(function (response) {
         console.log(response.data)
-        qms = response.data
-        // setqms(response.data)
+        var qms = response.data
+        setqms(response.data)
+        console.log(qms)
         console.log(response.data['Ticker'])
         // settickerlist(response.data['Ticker'])
         var temp = Object.values(response.data['Ticker'])
@@ -79,8 +80,11 @@ export default function Home() {
   }   
 
   // useEffect(() => {
-    // console.log(tickerlist)
-    // console.log(Object.keys(tickerlist).length)
+  //   if (qvs.length > 0) {
+  //     qvs.map(function(item, i){
+  //       console.log(item)
+  //     })
+  //   }
   // })
 
     return (
@@ -136,34 +140,10 @@ export default function Home() {
             </ul>
           } */}
 
-          <table className="table-fixed">
-            <thead>
-              <tr>
-                <th>Ticker</th>
-                <th>nothing</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                <ul>
-                  
-                  {tickerlist.map(function(item, index){
-                    return (
-                      // <li key={index}>{item}</li>
-                      <li key={index}>
-                        <tr>
-                          <td>{item}</td>
-                          <td>Nothing</td>
-                        </tr>
-                      </li>
-                    )
-                  })}
-                </ul>
-              }
-            </tbody>
-          </table>
 
-          <Tablestocks data={qvs}/>
+          
+          {/* <Tablestocks data={qvs} /> */}
+          <Tablestocks name="hello" data={qms}/>
 
           
           
