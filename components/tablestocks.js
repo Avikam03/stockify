@@ -56,7 +56,7 @@ export default function Tablestocks(props){
                    
                     {Object.keys(x).length > 0 && Object.keys(x['Ticker']).map(function(i, index) {
                         return (
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
                                 <Link href={"/stock/" + props.data['Ticker'][i]}>
                                     <a>
                                     <th scope="row" className="underline px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
