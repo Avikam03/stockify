@@ -32,53 +32,63 @@ export default function Home() {
   }
 
   const qmsdisplay = async () => {
-    setIsLoading(true)
-    await axios({
-        method: 'get',
-        url: baseUrl + 'hqm?value=' + number,
-        responseType: 'json',
-      })
-      .then(function (response) {
-        console.log(response.data)
-        // var qms = response.data
-        setqms(response.data)
-        // console.log(qms)
-        console.log(response.data['Ticker'])
-        // settickerlist(response.data['Ticker'])
-        var temp = Object.values(response.data['Ticker'])
-        tickerlist = temp
-        console.log(qms)
-        console.log(tickerlist)
-        console.log(tickerlist[1])
-        // settickerlist(qms['Ticker'])
-        setIsLoading(false)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    console.log(Number(number))
+    if (isNaN(Number(number))){
+      alert('Please enter a number')
+    } else {
+      setIsLoading(true)
+      await axios({
+          method: 'get',
+          url: baseUrl + 'hqm?value=' + number,
+          responseType: 'json',
+        })
+        .then(function (response) {
+          console.log(response.data)
+          // var qms = response.data
+          setqms(response.data)
+          // console.log(qms)
+          console.log(response.data['Ticker'])
+          // settickerlist(response.data['Ticker'])
+          var temp = Object.values(response.data['Ticker'])
+          tickerlist = temp
+          console.log(qms)
+          console.log(tickerlist)
+          console.log(tickerlist[1])
+          // settickerlist(qms['Ticker'])
+          setIsLoading(false)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }
 
   const qvsdisplay = async () => {
-    setIsLoading(true)
-    await axios({
-        method: 'get',
-        url: baseUrl + 'qvs?value=' + number,
-        responseType: 'json',
-      })
-      .then(function (response) {
-  
-        setQvs(response.data)
-        console.log(response.data)
-        console.log(qvs)
-        var temp = Object.values(response.data['Ticker'])
-        console.log(temp)
-        setTickerlist(temp)
-        console.log(tickerlist)
-        setIsLoading(false)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    console.log(Number(number))
+    if (isNaN(Number(number))){
+      alert('Please enter a number')
+    } else {
+      setIsLoading(true)
+      await axios({
+          method: 'get',
+          url: baseUrl + 'qvs?value=' + number,
+          responseType: 'json',
+        })
+        .then(function (response) {
+    
+          setQvs(response.data)
+          console.log(response.data)
+          console.log(qvs)
+          var temp = Object.values(response.data['Ticker'])
+          console.log(temp)
+          setTickerlist(temp)
+          console.log(tickerlist)
+          setIsLoading(false)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }   
 
   // useEffect(() => {
@@ -120,9 +130,9 @@ export default function Home() {
                 onChange={e => onChangeHandler(e.target.value)}
                 autoComplete="off"/>
               </div>              
-          </div>
-          
+          </div>          
           </div>  
+
   
           <div className="flex justify-center mt-5">
               <button className="bg-[#525252] hover:bg-black-700 text-white font-bold py-2 px-4 rounded content-center mx-5"	onClick={qmsdisplay}>
@@ -132,27 +142,10 @@ export default function Home() {
                   Quantitative Value Strategy
               </button>
           </div>
-          {/* <h1>{tickerlist.length}</h1> */}
-
-          {/* {
-            <ul>
-              {tickerlist.map(function(item, index){
-                return (<li key={index}>{item}</li>)
-              })}
-            </ul>
-          } */}
 
 
-          
-          {/* <Tablestocks data={qvs} /> */}
-          {Object.keys(qms).length > 0 ? <h1 className="font-bold leading-tight text-3xl mt-10 text-center">Quantitative Momentum Strategy</h1> : null}
-          {Object.keys(qms).length > 0 ? <Tablestocks name="hello" data={qms}/> : null}
-          {Object.keys(qvs).length > 0 ? <h1 className="font-bold leading-tight text-3xl mt-10 text-center">Quantitative Value Strategy</h1> : null}
 
-          {Object.keys(qvs).length > 0 ? <Tablestocks2 name="hello" data={qvs}/> : null}
-
-
-          {isLoading ? 
+        {isLoading ? 
           <div className="flex justify-center items-center mt-10">
           <h1 className="font-medium leading-tight text-3xl mx-5">Loading</h1>
           <svg role="status" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,6 +154,16 @@ export default function Home() {
           </svg>
           </div>
           : null}
+
+          
+          {Object.keys(qms).length > 0 ? <h1 className="font-bold leading-tight text-3xl mt-10 text-center">Quantitative Momentum Strategy</h1> : null}
+          {Object.keys(qms).length > 0 ? <Tablestocks name="hello" data={qms}/> : null}
+          {Object.keys(qvs).length > 0 ? <h1 className="font-bold leading-tight text-3xl mt-10 text-center">Quantitative Value Strategy</h1> : null}
+
+          {Object.keys(qvs).length > 0 ? <Tablestocks2 name="hello" data={qvs}/> : null}
+
+
+          
           
 
 
