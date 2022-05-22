@@ -4,6 +4,7 @@ Your neighbourhood stock recommender.
   <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/stockify1.png" />
   <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/stockify2.png" />
   <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/stockify3.png" />
+  <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/stockify4.png" />
  </div>
  <br/><br/>
 <br/><br/>
