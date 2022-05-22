@@ -8,13 +8,7 @@ export default function Footer() {
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
-                    <a href="https://linkedin.com/in/avikammangla" className="mr-4 hover:underline md:mr-6 ">Linkedin</a>
-                </li>
-                <li>
-                    <a href="https://github.com/avikam03" className="mr-4 hover:underline md:mr-6">Github</a>
-                </li>
-                <li>
-                    <a href="https://instagram.com/avikammangla" className="mr-4 hover:underline md:mr-6">Instagram</a>
+                    <a href="https://github.com/avikam03/stock-app" className="mr-4 hover:underline md:mr-6">Github</a>
                 </li>
                 <li>
                     <a href="mailto:avikam03@gmail.com" className="hover:underline">Email</a>
